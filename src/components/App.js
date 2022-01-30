@@ -4,10 +4,12 @@ import { useState, useEffect } from 'react';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS, MARKS } from '@contentful/rich-text-types';
 
+console.log(process.env.REACT_APP_CONTENTFUL_SPACEID)
+
 // Main configuration
 const config = {
-  spaceID: '6xrk35zptngz',
-  deliveryToken: 'hxA-YncKJ-haBXbtQF9l1Ffv-suunBrm1iW1lbmGPJI'
+  spaceID: process.env.REACT_APP_CONTENTFUL_SPACEID,
+  deliveryToken: process.env.REACT_APP_CONTENTFUL_DELIVERY_TOKEN
 };
 
 // Create client

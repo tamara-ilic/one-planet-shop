@@ -1,0 +1,14 @@
+name: Development
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  development:
+    runs-on: ubuntu-latest
+    environment: development
+    steps:
+      - name: deploy
+        # ...deployment-specific steps
