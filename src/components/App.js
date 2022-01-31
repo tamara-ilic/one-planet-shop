@@ -51,14 +51,14 @@ export default function App() {
         <h1 className='tagline'>Sustainable products that don't cost the Earth.</h1>
         {products.map((p) => (
           <>
-            <h4>{p.fields.title}</h4>
+            <h4 className='product-title'>{p.fields.title}</h4>
             <p>€ {p.fields.price}</p>
             <img className='product-image' src={p.img} alt={p.file.title} />
-            <>
+            <div>
               {documentToReactComponents(p.fields.description, {
                 _renderNode: {
                   [BLOCKS.PARAGRAPH]: (node, children) => {
-                    return <div className='product-description'>{children}</div>;
+                    return <p className='product-description'>{children}</p>;
                   },
                   [BLOCKS.HEADING_3]: (node, children) => {
                     return <h3>{children}</h3>;
@@ -84,7 +84,7 @@ export default function App() {
                     .flat();
                 }
               })}
-            </>
+            </div>
           </>
         ))}
       </div>

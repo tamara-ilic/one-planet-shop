@@ -33,15 +33,17 @@ h1, h2, h3, h4 {
   padding-bottom: 1rem;
 }
 
+.product-title {
+  padding: 1rem;
+}
+
 .product-description {
+  font-family: 'Crimson', serif;
+  line-height: 1.5;
   text-align: left;
 }
 
 .product-image {
   max-height: 50rem;
   max-width: 32rem;
-}
-
-.App-link {
-  color: #61dafb;
 }
