@@ -11,13 +11,26 @@
 }
 
 .App {
+  display: flex;
+  flex-direction: column;
   padding: 2rem;
   text-align: center;
+}
+
+.logo__leaves {
+  display: block;
+  margin: 0.5rem auto;
+  max-height: 3.75rem;
+  max-width: 15.5rem;
 }
 
 h1, h2, h3, h4 {
   color: var(--brand-green);
   font-family: 'Sen', sans-serif;
+}
+
+.tagline {
+  padding-bottom: 1rem;
 }
 
 .product-description {

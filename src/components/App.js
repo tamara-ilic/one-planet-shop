@@ -47,45 +47,46 @@ export default function App() {
 
   return (
     <div className='App'>
-      <h1>Sustainable products that don't cost the Earth.</h1>
-      {products.map((p) => (
-        <>
-          <h4>{p.fields.title}</h4>
-          <p>€ {p.fields.price}</p>
-          <img className='product-image' src={p.img} alt={p.file.title} />
+        <img className='logo__leaves' src={require('../assets/one-planet-logo.png')} alt='One Planet logo' />
+        <h1 className='tagline'>Sustainable products that don't cost the Earth.</h1>
+        {products.map((p) => (
           <>
-            {documentToReactComponents(p.fields.description, {
-              _renderNode: {
-                [BLOCKS.PARAGRAPH]: (node, children) => {
-                  return <div className='product-description'>{children}</div>;
+            <h4>{p.fields.title}</h4>
+            <p>€ {p.fields.price}</p>
+            <img className='product-image' src={p.img} alt={p.file.title} />
+            <>
+              {documentToReactComponents(p.fields.description, {
+                _renderNode: {
+                  [BLOCKS.PARAGRAPH]: (node, children) => {
+                    return <div className='product-description'>{children}</div>;
+                  },
+                  [BLOCKS.HEADING_3]: (node, children) => {
+                    return <h3>{children}</h3>;
+                  },
+                  [BLOCKS.UL_LIST]: (node, children) => {
+                    return <ul>{children}</ul>;
+                  }
                 },
-                [BLOCKS.HEADING_3]: (node, children) => {
-                  return <h3>{children}</h3>;
+                get renderNode() {
+                  return this._renderNode;
                 },
-                [BLOCKS.UL_LIST]: (node, children) => {
-                  return <ul>{children}</ul>;
-                }
-              },
-              get renderNode() {
-                return this._renderNode;
-              },
-              set renderNode(value) {
-                this._renderNode = value;
-              },
+                set renderNode(value) {
+                  this._renderNode = value;
+                },
 
-              renderMark: {
-                [MARKS.CODE]: (text) => <code className='red'>{text}</code>
-              },
-              renderText: (text) => {
-                return text
-                  .split('\n')
-                  .map((i) => [i, <br />])
-                  .flat();
-              }
-            })}
+                renderMark: {
+                  [MARKS.CODE]: (text) => <code className='red'>{text}</code>
+                },
+                renderText: (text) => {
+                  return text
+                    .split('\n')
+                    .map((i) => [i, <br />])
+                    .flat();
+                }
+              })}
+            </>
           </>
-        </>
-      ))}
-    </div>
+        ))}
+      </div>
   );
 }
