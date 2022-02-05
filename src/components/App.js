@@ -2,7 +2,6 @@ import '../styles/App.css';
 import { createClient } from 'contentful';
 import { useState, useEffect } from 'react';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { BLOCKS, MARKS } from '@contentful/rich-text-types';
 
 console.log(process.env.REACT_APP_CONTENTFUL_SPACEID)
 
