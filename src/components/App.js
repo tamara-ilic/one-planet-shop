@@ -54,36 +54,8 @@ export default function App() {
             <h4 className='product-title'>{p.fields.title}</h4>
             <p>€ {p.fields.price}</p>
             <img className='product-image' src={p.img} alt={p.file.title} />
-            <div>
-              {documentToReactComponents(p.fields.description, {
-                _renderNode: {
-                  [BLOCKS.PARAGRAPH]: (node, children) => {
-                    return <p className='product-description'>{children}</p>;
-                  },
-                  [BLOCKS.HEADING_3]: (node, children) => {
-                    return <h3>{children}</h3>;
-                  },
-                  [BLOCKS.UL_LIST]: (node, children) => {
-                    return <ul>{children}</ul>;
-                  }
-                },
-                get renderNode() {
-                  return this._renderNode;
-                },
-                set renderNode(value) {
-                  this._renderNode = value;
-                },
-
-                renderMark: {
-                  [MARKS.CODE]: (text) => <code className='red'>{text}</code>
-                },
-                renderText: (text) => {
-                  return text
-                    .split('\n')
-                    .map((i) => [i, <br />])
-                    .flat();
-                }
-              })}
+            <div className='product-description'>
+              {documentToReactComponents(p.fields.description)}
             </div>
           </>
         ))}
