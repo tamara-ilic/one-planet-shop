@@ -59,20 +59,36 @@ export default function App() {
   /* Blog END*/
 
   useEffect(() => {
-    getProducts().then((res) => {
-      const items = res.items;
+    getProducts()
+    .then((res) => setProducts(res.items))
+    .then((res) => console.log(res))
+  }, [])
 
-      const productListings = items.map((item, index) => {
-        return {
-          ...item,
-          file: item.fields.productMedia[0].fields.file,
-          title: item.fields.title,
-          img: item.fields.productMedia[0].fields.file.url
-        };
-      });
-      setProducts(productListings);
-    });
-  }, []);
+  useEffect(() => {
+    products.length && console.log(products[0].fields.productMedia)
+  }, [products])
+
+  // useEffect(() => {
+  //   getProducts().then((res) => {
+  //     const items = res.items;
+
+  //     const productListings = items.map((item, index) => {
+  //       return {
+  //         ...item,
+  //         file: item.fields.productMedia[0].fields.file,
+  //         title: item.fields.title,
+  //         // need to loop through all productMedia and get any images (instead of just the first one)
+          
+  //         // img: item.fields.productMedia.forEach((media) => {
+  //         //   <img src={media.fields.file.url} alt='some alt prop'/>
+  //         // })
+
+  //         img: item.fields.productMedia[0].fields.file.url
+  //       };
+  //     });
+  //     setProducts(productListings);
+  //   });
+  // }, []);
 
   return (
     <div className='App'>
@@ -95,7 +111,7 @@ export default function App() {
           <div key={p.sys.id}>
             <h4 className='product-title'>{p.fields.title}</h4>
             <p>€ {p.fields.price}</p>
-            <img className='product-image' src={p.img} alt={p.file.title} />
+            <img className='product-image' src={p.fields.productMedia[0].fields.url} alt='' />
             <div className='product-description'>
               {documentToReactComponents(p.fields.description)}
             </div>
