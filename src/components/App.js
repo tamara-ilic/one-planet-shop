@@ -1,7 +1,7 @@
-import '../styles/App.css';
-import { createClient } from 'contentful';
-import { useState, useEffect } from 'react';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import '../styles/App.css'
+import { createClient } from 'contentful'
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import { useState, useEffect } from 'react'
 
 // Main configuration
 const config = {
@@ -15,13 +15,14 @@ const client = createClient({
   accessToken: config.deliveryToken
 });
 
+// PRODUCTS START
 export const getProducts = () => {
-  // Retrieve all entries of a space
   return client.getEntries({
     content_type: 'product',
     order: 'sys.createdAt'
   });
 };
+// PRODUCTS END
 
 // BLOG START  
 export const getBlogPosts = () => {
@@ -32,15 +33,13 @@ export const getBlogPosts = () => {
 }
 // BLOG END 
 
-
 export default function App() {
-  const [products, setProducts] = useState([]);
+
   /* Blog START*/
   const [blogposts, setBlogPosts] = useState([])
 
   useEffect(() => {
     getBlogPosts().then((res) => {
-      console.log(res)
       const items = res.items
 
       const blogListings = items.map((item, index) => {
@@ -56,10 +55,12 @@ export default function App() {
   }, [])
   /* Blog END*/
 
+  /* Products START */
+  const [products, setProducts] = useState([]);
+
   useEffect(() => {
     getProducts()
     .then((res) => setProducts(res.items))
-    .then((res) => console.log(res))
   }, [])
 
   useEffect(() => {
@@ -67,7 +68,10 @@ export default function App() {
   }, [products])
 
   const listings = products.map(product => {
-    const productImages = product.fields.productMedia.map(image => (<img className='product-image' src={image.fields.file.url} alt='' />));
+    const productImages = product.fields.productMedia.map(image => (
+      <img className='product-image' src={image.fields.file.url} alt={image.fields.title} />
+      )
+    );
     const { title, price, description } = product.fields
 
     return {
@@ -78,8 +82,7 @@ export default function App() {
       productImages
     }
   })
-
-  console.log(listings)
+  /* Products END*/
 
   return (
     <div className='App'>
@@ -102,9 +105,7 @@ export default function App() {
           <div key={listing.id}>
             <h4 className='product-title'>{listing.title}</h4>
             <p>€ {listing.price}</p>
-
             {listing.productImages}
-            
             <div className='product-description'>
               {documentToReactComponents(listing.description)}
             </div>
