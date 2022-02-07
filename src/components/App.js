@@ -2,7 +2,8 @@ import '../styles/App.css'
 import { createClient } from 'contentful'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { useState, useEffect } from 'react'
-import LazyLoad, { lazyload } from 'react-lazyload'
+import LazyLoad from 'react-lazyload'
+import CircleLoader from 'react-spinners/CircleLoader'
 
 // Main configuration
 const config = {
@@ -70,7 +71,7 @@ export default function App() {
 
   const listings = products.map(product => {
     const productImages = product.fields.productMedia.map(image => (
-      <LazyLoad>
+      <LazyLoad placeholder={<CircleLoader color='#5DA69E' size='200' />}>
         <img className='product-image' src={image.fields.file.url} alt={image.fields.title} loading='lazy' />
       </LazyLoad>
       )
