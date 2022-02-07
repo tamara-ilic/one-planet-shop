@@ -69,7 +69,7 @@ export default function App() {
 
   const listings = products.map(product => {
     const productImages = product.fields.productMedia.map(image => (
-      <img className='product-image' src={image.fields.file.url} alt={image.fields.title} />
+      <img className='product-image' src={image.fields.file.url} alt={image.fields.title} loading='lazy' />
       )
     );
     const { title, price, description } = product.fields
