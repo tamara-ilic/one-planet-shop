@@ -3,8 +3,6 @@ import { createClient } from 'contentful';
 import { useState, useEffect } from 'react';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
-// console.log(process.env.REACT_APP_CONTENTFUL_SPACEID)
-
 // Main configuration
 const config = {
   spaceID: process.env.REACT_APP_CONTENTFUL_SPACEID,
@@ -68,27 +66,20 @@ export default function App() {
     products.length && console.log(products[0].fields.productMedia)
   }, [products])
 
-  // useEffect(() => {
-  //   getProducts().then((res) => {
-  //     const items = res.items;
+  const listings = products.map(product => {
+    const productImages = product.fields.productMedia.map(image => (<img className='product-image' src={image.fields.file.url} alt='' />));
+    const { title, price, description } = product.fields
 
-  //     const productListings = items.map((item, index) => {
-  //       return {
-  //         ...item,
-  //         file: item.fields.productMedia[0].fields.file,
-  //         title: item.fields.title,
-  //         // need to loop through all productMedia and get any images (instead of just the first one)
-          
-  //         // img: item.fields.productMedia.forEach((media) => {
-  //         //   <img src={media.fields.file.url} alt='some alt prop'/>
-  //         // })
+    return {
+      id: product.sys.id,
+      title,
+      price,
+      description,
+      productImages
+    }
+  })
 
-  //         img: item.fields.productMedia[0].fields.file.url
-  //       };
-  //     });
-  //     setProducts(productListings);
-  //   });
-  // }, []);
+  console.log(listings)
 
   return (
     <div className='App'>
@@ -107,13 +98,15 @@ export default function App() {
       }
 
       {
-        products.map((p) => (
-          <div key={p.sys.id}>
-            <h4 className='product-title'>{p.fields.title}</h4>
-            <p>€ {p.fields.price}</p>
-            <img className='product-image' src={p.fields.productMedia[0].fields.url} alt='' />
+        listings.map((listing) => (
+          <div key={listing.id}>
+            <h4 className='product-title'>{listing.title}</h4>
+            <p>€ {listing.price}</p>
+
+            {listing.productImages}
+            
             <div className='product-description'>
-              {documentToReactComponents(p.fields.description)}
+              {documentToReactComponents(listing.description)}
             </div>
           </div>
         ))
