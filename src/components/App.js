@@ -73,7 +73,7 @@ export default function App() {
 
   const listings = products.map(product => {
     const productImages = product.fields.productMedia.map(image => (
-      <LazyLoad placeholder={<CircleLoader color='#5DA69E' size='200px' />}>
+      <LazyLoad key={image.sys.id} placeholder={<CircleLoader color='#5DA69E' size='200px' />}>
         <img className='product-image' src={image.fields.file.url} alt={image.fields.title} loading='lazy' />
       </LazyLoad>
     )
