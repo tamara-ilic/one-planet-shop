@@ -37,6 +37,15 @@ export const getBlogPosts = () => {
 }
 // BLOG END 
 
+// REVIEWS START
+export const getReviews = () => {
+  return client.getEntries({
+    content_type: 'reviews',
+    order: 'sys.createdAt'
+  })
+}
+// REVIEWS END
+
 export default function App() {
 
   /* Blog START*/
@@ -90,6 +99,24 @@ export default function App() {
   })
   /* Products END*/
 
+  /* Reviews START */
+  const [reviews, setReviews] = useState([]);
+
+  useEffect(() => {
+    getReviews().then((res) => {
+      const items = res.items;
+
+      const customerReviews = items.map((item, index) => {
+        return {
+          ...item,
+          headline: item.fields.headline,
+          review: item.fields.review
+        }
+      })
+      setReviews(customerReviews);
+    })
+  }, [])
+/* Reviews END */
 
   /* NAVBAR START*/
   function Navbar() {
@@ -100,6 +127,7 @@ export default function App() {
           <Link to="/">Home</Link>
           <Link to="/blog">Blog</Link>
           <Link to="/shop">Shop</Link>
+          <Link to="/reviews">Reviews</Link>
         </nav>
       </>
     )
@@ -117,6 +145,7 @@ export default function App() {
           <Link to="/">Home</Link>
           <Link to="/blog">Blog</Link>
           <Link to="/shop">Shop</Link>
+          <Link to="/reviews">Reviews</Link>
         </nav>
       </>
     )
@@ -166,6 +195,23 @@ export default function App() {
   }
   /* SHOP END*/
 
+  /* REVIEWS START */
+  function Reviews() {
+    return (
+      <>
+        <Navbar />
+        {reviews.map((r) => (
+          <div key={reviews.id}>
+            <h4 className='product-title'>{r.fields.headline}</h4>
+            <p className='product-description'>{r.fields.review}</p>
+          </div>
+        ))}
+      </>
+    )
+  }
+
+  /* REVIEWS END */
+
   /* ----------------------------------------------------------------------------------- */
   return (
     <div className='App'>
@@ -173,6 +219,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="blog" element={<Blog />} />
         <Route path="shop" element={<Shop />} />
+        <Route path="reviews" element={<Reviews />} />
       </Routes>
     </div >
   );
