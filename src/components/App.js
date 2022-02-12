@@ -116,14 +116,15 @@ export default function App() {
       setReviews(customerReviews);
     })
   }, [])
-/* Reviews END */
+  /* Reviews END */
 
   /* NAVBAR START*/
   function Navbar() {
     return (
       <>
-        <nav>
+        <nav className="navbar">
           <img className='logo__leaves' src={require('../assets/one-planet-logo.png')} alt='One Planet logo' />
+
           <Link to="/">Home</Link>
           <Link to="/blog">Blog</Link>
           <Link to="/shop">Shop</Link>
@@ -141,12 +142,10 @@ export default function App() {
       <>
         <Navbar />
         <h1 className='tagline'>Sustainable products that don't cost the Earth.</h1>
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/blog">Blog</Link>
-          <Link to="/shop">Shop</Link>
-          <Link to="/reviews">Reviews</Link>
-        </nav>
+        <p>Shopping sustainably doesn’t have to be expensive.
+
+          By shopping here you will be spending the same or less than you would on equivalent non-sustainable products. The only instance when this might not be the case is when shopping for reusable alternatives to disposable products. Those might cost a bit more upfront but will save you a lot of money in the long run. Here's an example: this lovely graph shows the yearly cost of a lifetime of shaving.</p>
+        <Footer />
       </>
     )
   }
@@ -168,6 +167,7 @@ export default function App() {
           </div>
         ))
         }
+        <Footer />
       </>
     )
   }
@@ -190,6 +190,7 @@ export default function App() {
           </div>
         ))
         }
+        <Footer />
       </>
     )
   }
@@ -206,11 +207,28 @@ export default function App() {
             <p className='product-description'>{r.fields.review}</p>
           </div>
         ))}
+        <Footer />
       </>
     )
   }
 
   /* REVIEWS END */
+
+  /* FOOTER START */
+  function Footer() {
+    return (
+      <div className="footer">
+        <a href="#">Impressum</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">Youtube</a>
+      </div>
+    )
+  }
+
+  /* REVIEWS END */
+
 
   /* ----------------------------------------------------------------------------------- */
   return (
