@@ -1,6 +1,5 @@
 {
   "name": "one-planet-shop",
-  "homepage": "https://tamara-ilic.github.io/one-planet-shop",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
