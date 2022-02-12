@@ -125,9 +125,9 @@ export default function App() {
     return (
       <>
         <nav className="navbar">
-          <img className='logo__leaves' src={require('../assets/one-planet-logo.png')} alt='One Planet logo' />
-
-          <Link to="/">Home</Link>
+          <Link to="/">
+            <img className='logo__leaves' src={require('../assets/one-planet-logo.png')} alt='One Planet logo' />
+          </Link>
           <Link to="/blog">Blog</Link>
           <Link to="/shop">Shop</Link>
           <Link to="/reviews">Reviews</Link>
@@ -143,7 +143,6 @@ export default function App() {
   function Home() {
     return (
       <>
-        <Navbar />
         <h1 className='tagline'>Sustainable products that don't cost the Earth.</h1>
         <p>Shopping sustainably doesn’t have to be expensive.
 
@@ -159,7 +158,6 @@ export default function App() {
   function Blog() {
     return (
       <>
-        <Navbar />
         {blogposts.map((b) => (
           <div key={b.sys.id} >
             <h4 className='product-title'>{b.fields.blogTitle}</h4>
@@ -181,7 +179,6 @@ export default function App() {
   function Shop() {
     return (
       <>
-        <Navbar />
         {listings.map((listing) => (
           <div key={listing.id}>
             <h4 className='product-title'>{listing.title}</h4>
@@ -203,7 +200,6 @@ export default function App() {
   function Reviews() {
     return (
       <>
-        <Navbar />
         {reviews.map((r) => (
           <div key={reviews.id}>
             <h4 className='product-title'>{r.fields.headline}</h4>
@@ -237,6 +233,7 @@ export default function App() {
   /* ----------------------------------------------------------------------------------- */
   return (
     <div className='App'>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="blog" element={<Blog />} />
