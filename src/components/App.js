@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 import LazyLoad from 'react-lazyload'
 import CircleLoader from 'react-spinners/CircleLoader'
 import { Routes, Route, Link } from "react-router-dom"
+import ContactForm from './ContactForm'
 
 
 // Main configuration
@@ -82,7 +83,7 @@ export default function App() {
 
   const listings = products.map(product => {
     const productImages = product.fields.productMedia.map(image => (
-      <LazyLoad placeholder={<CircleLoader color='#5DA69E' size='200' />}>
+      <LazyLoad key={image.sys.id} placeholder={<CircleLoader color='#5DA69E' size='200px' />}>
         <img className='product-image' src={image.fields.file.url} alt={image.fields.title} loading='lazy' />
       </LazyLoad>
     )
@@ -129,6 +130,7 @@ export default function App() {
           <Link to="/blog">Blog</Link>
           <Link to="/shop">Shop</Link>
           <Link to="/reviews">Reviews</Link>
+          <Link to="/contact">Contact</Link>
         </nav>
       </>
     )
@@ -238,6 +240,7 @@ export default function App() {
         <Route path="blog" element={<Blog />} />
         <Route path="shop" element={<Shop />} />
         <Route path="reviews" element={<Reviews />} />
+        <Route path="contact" element={<ContactForm />} />
       </Routes>
     </div >
   );

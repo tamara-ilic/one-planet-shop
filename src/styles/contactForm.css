@@ -1,0 +1,14 @@
+.form-field {
+    display: flex;
+    padding: 1rem;
+    text-align: right;
+}
+
+label {
+    align-self: flex-start;
+    padding-right: 1rem;
+}
+
+input, textarea {
+    min-width: 14rem; 
+}
