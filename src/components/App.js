@@ -6,6 +6,7 @@ import LazyLoad from 'react-lazyload'
 import CircleLoader from 'react-spinners/CircleLoader'
 import { Routes, Route, Link } from "react-router-dom"
 import ContactForm from './ContactForm'
+import { FaFacebookSquare, FaInstagramSquare, FaYoutube } from "react-icons/fa"
 
 
 // Main configuration
@@ -222,9 +223,10 @@ export default function App() {
       <div className="footer">
         <a href="#">Impressum</a>
         <a href="#">Privacy Policy</a>
-        <a href="#">Facebook</a>
-        <a href="#">Instagram</a>
-        <a href="#">Youtube</a>
+
+        <a href="#"><h2><FaFacebookSquare /></h2></a>
+        <a href="#"><h2><FaInstagramSquare /></h2></a>
+        <a href="#"><h2><FaYoutube /></h2></a>
       </div>
     )
   }
