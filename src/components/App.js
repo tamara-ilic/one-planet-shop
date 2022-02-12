@@ -228,9 +228,9 @@ export default function App() {
         <a href="#">Impressum</a>
         <a href="#">Privacy Policy</a>
 
-        <a href="#"><h2><FaFacebookSquare /></h2></a>
-        <a href="#"><h2><FaInstagramSquare /></h2></a>
-        <a href="#"><h2><FaYoutube /></h2></a>
+        <a href="https://m.facebook.com/oneplanetshop.de/" target='_blank'><h2><FaFacebookSquare /></h2></a>
+        <a href="https://www.instagram.com/oneplanetshop.de/" target='_blank'><h2><FaInstagramSquare /></h2></a>
+        <a href="https://m.youtube.com/channel/UCyxYz7Ec6EuCrIvWb1BpoQw" target='_blank'><h2><FaYoutube /></h2></a>
       </div>
     )
   }
