@@ -4,6 +4,8 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { useState, useEffect } from 'react'
 import LazyLoad from 'react-lazyload'
 import CircleLoader from 'react-spinners/CircleLoader'
+import { Routes, Route, Link } from "react-router-dom"
+
 
 // Main configuration
 const config = {
@@ -62,7 +64,7 @@ export default function App() {
 
   useEffect(() => {
     getProducts()
-    .then((res) => setProducts(res.items))
+      .then((res) => setProducts(res.items))
   }, [])
 
   useEffect(() => {
@@ -74,7 +76,7 @@ export default function App() {
       <LazyLoad placeholder={<CircleLoader color='#5DA69E' size='200' />}>
         <img className='product-image' src={image.fields.file.url} alt={image.fields.title} loading='lazy' />
       </LazyLoad>
-      )
+    )
     );
     const { title, price, description } = product.fields
 
@@ -88,24 +90,67 @@ export default function App() {
   })
   /* Products END*/
 
-  return (
-    <div className='App'>
-      <img className='logo__leaves' src={require('../assets/one-planet-logo.png')} alt='One Planet logo' />
-      <h1 className='tagline'>Sustainable products that don't cost the Earth.</h1>
 
-      {blogposts.map((b) => (
-        <div key={b.sys.id} >
-          <h4 className='product-title'>{b.fields.blogTitle}</h4>
-          <img className='product-image' src={b.blogPicture} />
-          <div className='product-description'>
-            {documentToReactComponents(b.fields.blogText)}
+  /* NAVBAR START*/
+  function Navbar() {
+    return (
+      <>
+        <nav>
+          <img className='logo__leaves' src={require('../assets/one-planet-logo.png')} alt='One Planet logo' />
+          <Link to="/">Home</Link>
+          <Link to="/blog">Blog</Link>
+          <Link to="/shop">Shop</Link>
+        </nav>
+      </>
+    )
+  }
+  /* NAVBAR END*/
+
+
+  /* HOME START*/
+  function Home() {
+    return (
+      <>
+        <Navbar />
+        <h1 className='tagline'>Sustainable products that don't cost the Earth.</h1>
+        <nav>
+          <Link to="/">Home</Link>
+          <Link to="/blog">Blog</Link>
+          <Link to="/shop">Shop</Link>
+        </nav>
+      </>
+    )
+  }
+  /* HOME END*/
+
+
+  /* BLOG START*/
+  function Blog() {
+    return (
+      <>
+        <Navbar />
+        {blogposts.map((b) => (
+          <div key={b.sys.id} >
+            <h4 className='product-title'>{b.fields.blogTitle}</h4>
+            <img className='product-image' src={b.blogPicture} />
+            <div className='product-description'>
+              {documentToReactComponents(b.fields.blogText)}
+            </div>
           </div>
-        </div>
-      ))
-      }
+        ))
+        }
+      </>
+    )
+  }
+  /* BLOG END*/
 
-      {
-        listings.map((listing) => (
+
+  /* SHOP START*/
+  function Shop() {
+    return (
+      <>
+        <Navbar />
+        {listings.map((listing) => (
           <div key={listing.id}>
             <h4 className='product-title'>{listing.title}</h4>
             <p>€ {listing.price}</p>
@@ -115,7 +160,20 @@ export default function App() {
             </div>
           </div>
         ))
-      }
+        }
+      </>
+    )
+  }
+  /* SHOP END*/
+
+  /* ----------------------------------------------------------------------------------- */
+  return (
+    <div className='App'>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="blog" element={<Blog />} />
+        <Route path="shop" element={<Shop />} />
+      </Routes>
     </div >
   );
 }
