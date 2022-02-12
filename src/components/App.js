@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 import LazyLoad from 'react-lazyload'
 import CircleLoader from 'react-spinners/CircleLoader'
 import { Routes, Route, Link } from "react-router-dom"
+import ContactForm from './ContactForm'
 
 
 // Main configuration
@@ -100,6 +101,7 @@ export default function App() {
           <Link to="/">Home</Link>
           <Link to="/blog">Blog</Link>
           <Link to="/shop">Shop</Link>
+          <Link to="/contact">Contact</Link>
         </nav>
       </>
     )
@@ -112,12 +114,12 @@ export default function App() {
     return (
       <>
         <Navbar />
-        <h1 className='tagline'>Sustainable products that don't cost the Earth.</h1>
+        {/* <h1 className='tagline'>Sustainable products that don't cost the Earth.</h1>
         <nav>
           <Link to="/">Home</Link>
           <Link to="/blog">Blog</Link>
           <Link to="/shop">Shop</Link>
-        </nav>
+        </nav> */}
       </>
     )
   }
@@ -173,6 +175,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="blog" element={<Blog />} />
         <Route path="shop" element={<Shop />} />
+        <Route path="contact" element={<ContactForm />} />
       </Routes>
     </div >
   );
