@@ -7,7 +7,8 @@ import CircleLoader from 'react-spinners/CircleLoader'
 import { Routes, Route, Link } from "react-router-dom"
 import ContactForm from './ContactForm'
 import { FaFacebookSquare, FaInstagramSquare, FaYoutube } from "react-icons/fa"
-
+import { GiHamburgerMenu } from 'react-icons/gi'
+import { AiOutlineClose } from 'react-icons/ai'
 
 // Main configuration
 const config = {
@@ -122,16 +123,23 @@ export default function App() {
 
   /* NAVBAR START*/
   function Navbar() {
+    const [navbarOpen, setNavbarOpen] = useState(false)
+
+    const handleNavbarToggle = () => {
+      setNavbarOpen(previous => !previous)
+    }
+
     return (
       <>
         <nav className="navbar">
-          <Link to="/">
+          <button onClick={handleNavbarToggle}>{navbarOpen ? <AiOutlineClose /> : <GiHamburgerMenu />}</button>
+          <Link to="/" >
             <img className='logo__leaves' src={require('../assets/one-planet-logo.png')} alt='One Planet logo' />
           </Link>
-          <Link to="/blog">Blog</Link>
-          <Link to="/shop">Shop</Link>
-          <Link to="/reviews">Reviews</Link>
-          <Link to="/contact">Contact</Link>
+          <Link to="/blog" className={`menuNav ${navbarOpen ? "showMenu" : ""}`}>Blog</Link>
+          <Link to="/shop" className={`menuNav ${navbarOpen ? "showMenu" : ""}`}>Shop</Link>
+          <Link to="/reviews" className={`menuNav ${navbarOpen ? "showMenu" : ""}`}>Reviews</Link>
+          <Link to="/contact" className={`menuNav ${navbarOpen ? "showMenu" : ""}`}>Contact</Link>
         </nav>
       </>
     )

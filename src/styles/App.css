@@ -17,6 +17,11 @@
   text-align: center;
 }
 
+button {
+  cursor: pointer;
+}
+
+/* Navbar START */
 .navbar {
   display: flex;
   justify-content: center;
@@ -27,6 +32,7 @@
 .logo__leaves {
   max-height: 2.2rem;
 }
+/* Navbar END */
 
 h1, h2, h3, h4 {
   color: var(--brand-green);
