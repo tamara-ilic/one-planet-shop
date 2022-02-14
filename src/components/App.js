@@ -158,12 +158,8 @@ export default function App() {
     return (
       <main>
         <h1 className='tagline'>Sustainable products that don't cost the Earth.</h1>
-        <p>Shopping sustainably doesn’t have to be expensive.</p>
-
-        <p>
-          By shopping here you will be spending the same or less than you would on equivalent non-sustainable products. The only instance when this might not be the case is when shopping for reusable alternatives to disposable products. Those might cost a bit more upfront but will save you a lot of money in the long run. 
-          
-        </p>Here's an example: this lovely graph shows the yearly cost of a lifetime of shaving.
+        <p>Hey, so you want to shop responsibly and on a budget? We offer products that are both sustainable and affordable - it shouldn’t be a trade off.</p>
+        <img className='shop-symbols' src={require('../assets/one-planet-cruelty-free-conscious-plastic-free.png')} alt='cruelty-free, conscious, plastic-free symbols'></img>
       </main>
     )
   }

@@ -18,10 +18,12 @@
 }
 
 button {
+  background-color: var(--brand-green);
+  border-radius: 2%;
   cursor: pointer;
 }
 
-/* Navbar START */
+/* Header START */
 header {
   display: flex;
   height: 10vh;
@@ -36,26 +38,11 @@ header {
   max-height: 2.2rem;
 }
 
-.navbar {
-  text-align: right;
-}
-
-.navbar.active {
-  background-color: red;
-  color: red;
-  height: 100vh;
-}
-
-.navbar button {
-  right: 40px;
-  top: 40px;
-}
-
 .menuNav {
   background-color: white;
   height: 100vh;
-  position: fixed;
   right: -50vw;
+  position: absolute;
   transition: all .5s ease;
   width: 50vw;
 }
@@ -78,7 +65,7 @@ header a {
   padding: 0.25rem;
 }
 
-/* Navbar END */
+/* Header END */
 
 h1, h2, h3, h4 {
   color: var(--brand-green);
@@ -97,6 +84,11 @@ main p {
   padding-bottom: 1rem;
 }
 
+.shop-symbols {
+  max-width: 18rem;
+  padding-top: 1rem;
+}
+
 .product-title {
   padding: 1rem;
 }
@@ -110,13 +102,13 @@ main p {
 .product-image {
   max-height: 50rem;
   max-width: 32rem;
-  width: 100%
+  width: 100%;
 }
 
 .footer {
-  margin-top: 5em;
   display: flex;
-  justify-content: center;
   gap: 10px;
+  justify-content: center;
+  margin-top: 5em;
 }
 
