@@ -6,6 +6,8 @@ export const ShopContext = createContext()
 const ShopContextProvider = ({ children }) => {
     const [products, setProducts] = useState([])
     const [blogposts, setBlogPosts] = useState([])
+    const [reviews, setReviews] = useState([]);
+
 
     useEffect(() => {
         getProducts()
@@ -22,15 +24,30 @@ const ShopContextProvider = ({ children }) => {
     
           const blogListings = items.map((item, index) => {
             return {
-              ...item,
-              title: item.fields.blogTitle,
-              blogPicture: item?.fields?.blogPicture?.fields.file.url,
-              text: item.fields.blogText
+                ...item,
+                title: item.fields.blogTitle,
+                blogPicture: item?.fields?.blogPicture?.fields.file.url,
+                text: item.fields.blogText
             }
           })
           setBlogPosts(blogListings)
         })
       }, [])
+  
+    useEffect(() => {
+        getReviews().then((res) => {
+        const items = res.items;
+
+        const customerReviews = items.map((item, index) => {
+            return {
+                ...item,
+                headline: item.fields.headline,
+                review: item.fields.review
+            }
+            })
+            setReviews(customerReviews);
+            })
+        }, [])
 
     // Main configuration
     const config = {
@@ -72,7 +89,7 @@ const ShopContextProvider = ({ children }) => {
   // REVIEWS END
 
   return (
-      <ShopContext.Provider value={{products, blogposts}}>
+      <ShopContext.Provider value={{products, blogposts, reviews}}>
           {children}
       </ShopContext.Provider>
   )
