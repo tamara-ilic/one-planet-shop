@@ -22,16 +22,45 @@ button {
 }
 
 /* Navbar START */
-.navbar {
+.menu-wrapper {
   display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 5em;
+  justify-content: space-between;
 }
 
 .logo__leaves {
   max-height: 2.2rem;
 }
+
+.navBar {
+  text-align: right;
+}
+
+.navBar button {
+  position: fixed;
+  left: 40px;
+  top: 40px;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.menuNav {
+  display: none;
+}
+
+.menuNav.showMenu {
+  display: unset;
+  padding: unset;
+  text-align: right;
+}
+
+a {
+  display: block;
+  text-decoration: none;
+  color: #3fffd2;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
 /* Navbar END */
 
 h1, h2, h3, h4 {

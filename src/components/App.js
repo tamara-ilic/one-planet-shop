@@ -4,7 +4,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { useState, useEffect } from 'react'
 import LazyLoad from 'react-lazyload'
 import CircleLoader from 'react-spinners/CircleLoader'
-import { Routes, Route, Link } from "react-router-dom"
+import { Routes, Route, NavLink } from "react-router-dom"
 import ContactForm from './ContactForm'
 import { FaFacebookSquare, FaInstagramSquare, FaYoutube } from "react-icons/fa"
 import { GiHamburgerMenu } from 'react-icons/gi'
@@ -129,19 +129,25 @@ export default function App() {
       setNavbarOpen(previous => !previous)
     }
 
+    const closeMenu = () => {
+      setNavbarOpen(false)
+    }
+
     return (
-      <>
+      <div class='menu-wrapper'>
+        <NavLink to="/" >
+          <img className='logo__leaves' src={require('../assets/one-planet-logo.png')} alt='One Planet logo' />
+        </NavLink>
         <nav className="navbar">
           <button onClick={handleNavbarToggle}>{navbarOpen ? <AiOutlineClose /> : <GiHamburgerMenu />}</button>
-          <Link to="/" >
-            <img className='logo__leaves' src={require('../assets/one-planet-logo.png')} alt='One Planet logo' />
-          </Link>
-          <Link to="/blog" className={`menuNav ${navbarOpen ? "showMenu" : ""}`}>Blog</Link>
-          <Link to="/shop" className={`menuNav ${navbarOpen ? "showMenu" : ""}`}>Shop</Link>
-          <Link to="/reviews" className={`menuNav ${navbarOpen ? "showMenu" : ""}`}>Reviews</Link>
-          <Link to="/contact" className={`menuNav ${navbarOpen ? "showMenu" : ""}`}>Contact</Link>
+          <ul className={`menuNav ${navbarOpen ? " showMenu" : ""}`}>
+            <NavLink onClick={() => closeMenu()} to="/blog"  >Blog</NavLink>
+            <NavLink onClick={() => closeMenu()} to="/shop" >Shop</NavLink>
+            <NavLink onClick={() => closeMenu()} to="/reviews" >Reviews</NavLink>
+            <NavLink onClick={() => closeMenu()} to="/contact" >Contact</NavLink>
+          </ul>
         </nav>
-      </>
+      </div>
     )
   }
   /* NAVBAR END*/
@@ -228,9 +234,9 @@ export default function App() {
         <a href="#">Impressum</a>
         <a href="#">Privacy Policy</a>
 
-        <a href="https://m.facebook.com/oneplanetshop.de/" target='_blank'><h2><FaFacebookSquare /></h2></a>
-        <a href="https://www.instagram.com/oneplanetshop.de/" target='_blank'><h2><FaInstagramSquare /></h2></a>
-        <a href="https://m.youtube.com/channel/UCyxYz7Ec6EuCrIvWb1BpoQw" target='_blank'><h2><FaYoutube /></h2></a>
+        <a href="https://m.facebook.com/oneplanetshop.de/" target='_blank' rel='noreferrer'><h2><FaFacebookSquare /></h2></a>
+        <a href="https://www.instagram.com/oneplanetshop.de/" target='_blank' rel='noreferrer'><h2><FaInstagramSquare /></h2></a>
+        <a href="https://m.youtube.com/channel/UCyxYz7Ec6EuCrIvWb1BpoQw" target='_blank' rel='noreferrer'><h2><FaYoutube /></h2></a>
       </div>
     )
   }

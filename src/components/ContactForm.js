@@ -28,29 +28,32 @@ export default function ContactForm() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <>
+            <h4>Have feedback or a suggestion? We'd love to hear from you! </h4>
+            <form onSubmit={handleSubmit}>
 
-            <div className='form-field'>
-                <label htmlFor='name'>Name</label>
-                <input type='text' id='name' placeholder="What's your name?" required></input>
-            </div>
+                <div className='form-field'>
+                    <label htmlFor='name'>Name</label>
+                    <input type='text' id='name' placeholder="What's your name?" required></input>
+                </div>
 
-            <div className='form-field'>
-                <label htmlFor='email'>Email</label>
-                <input type='email' id='email' placeholder='How can we reach you?' required></input>
-            </div>
+                <div className='form-field'>
+                    <label htmlFor='email'>Email</label>
+                    <input type='email' id='email' placeholder='How can we reach you?' required></input>
+                </div>
 
-            <div className='form-field'>
-                <label htmlFor='subject'>Subject</label>
-                <input type='text' id='subject' placeholder='What would you like to tell us?' required></input>
-            </div>
+                <div className='form-field'>
+                    <label htmlFor='subject'>Subject</label>
+                    <input type='text' id='subject' placeholder='What would you like to tell us?' required></input>
+                </div>
 
-            <div className='form-field'>
-                <label htmlFor='message'>Message</label>
-                <textarea id='message' required></textarea>
-            </div>
+                <div className='form-field'>
+                    <label htmlFor='message'>Message</label>
+                    <textarea id='message' required></textarea>
+                </div>
 
-            <button type='submit'>{status}</button>
-        </form>
+                <button type='submit'>{status}</button>
+            </form>
+        </>
     )
 }
