@@ -22,43 +22,60 @@ button {
 }
 
 /* Navbar START */
-.menu-wrapper {
+header {
   display: flex;
+  height: 10vh;
   justify-content: space-between;
+  left: 0;
+  position: fixed;
+  width: 100vw;
+  z-index: 1;
 }
 
 .logo__leaves {
   max-height: 2.2rem;
 }
 
-.navBar {
+.navbar {
   text-align: right;
 }
 
-.navBar button {
-  position: fixed;
-  left: 40px;
+.navbar.active {
+  background-color: red;
+  color: red;
+  height: 100vh;
+}
+
+.navbar button {
+  right: 40px;
   top: 40px;
-  z-index: 10;
-  cursor: pointer;
 }
 
 .menuNav {
-  display: none;
+  background-color: white;
+  height: 100vh;
+  position: fixed;
+  right: -50vw;
+  transition: all .5s ease;
+  width: 50vw;
 }
 
 .menuNav.showMenu {
-  display: unset;
-  padding: unset;
+  right: 0;
   text-align: right;
+  transition: all .5s ease;
 }
 
 a {
+  color: var(--brand-green);
   display: block;
-  text-decoration: none;
-  color: #3fffd2;
-  text-transform: uppercase;
   font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+header a {
+  padding: 0.25rem;
 }
 
 /* Navbar END */
@@ -66,6 +83,14 @@ a {
 h1, h2, h3, h4 {
   color: var(--brand-green);
   font-family: 'Sen', sans-serif;
+}
+
+main {
+  padding: 4rem 1rem 0 1rem;
+}
+
+main p {
+  padding-bottom: 1rem;
 }
 
 .tagline {

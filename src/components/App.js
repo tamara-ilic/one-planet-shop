@@ -134,20 +134,20 @@ export default function App() {
     }
 
     return (
-      <div class='menu-wrapper'>
-        <NavLink to="/" >
+      <header >
+        <NavLink to="/" className={'logo'}>
           <img className='logo__leaves' src={require('../assets/one-planet-logo.png')} alt='One Planet logo' />
         </NavLink>
-        <nav className="navbar">
+        <nav>
           <button onClick={handleNavbarToggle}>{navbarOpen ? <AiOutlineClose /> : <GiHamburgerMenu />}</button>
-          <ul className={`menuNav ${navbarOpen ? " showMenu" : ""}`}>
+          <div className={`menuNav ${navbarOpen ? "showMenu" : ""}`}>
             <NavLink onClick={() => closeMenu()} to="/blog"  >Blog</NavLink>
             <NavLink onClick={() => closeMenu()} to="/shop" >Shop</NavLink>
             <NavLink onClick={() => closeMenu()} to="/reviews" >Reviews</NavLink>
             <NavLink onClick={() => closeMenu()} to="/contact" >Contact</NavLink>
-          </ul>
+          </div>
         </nav>
-      </div>
+      </header>
     )
   }
   /* NAVBAR END*/
@@ -156,13 +156,15 @@ export default function App() {
   /* HOME START*/
   function Home() {
     return (
-      <>
+      <main>
         <h1 className='tagline'>Sustainable products that don't cost the Earth.</h1>
-        <p>Shopping sustainably doesn’t have to be expensive.
+        <p>Shopping sustainably doesn’t have to be expensive.</p>
 
-          By shopping here you will be spending the same or less than you would on equivalent non-sustainable products. The only instance when this might not be the case is when shopping for reusable alternatives to disposable products. Those might cost a bit more upfront but will save you a lot of money in the long run. Here's an example: this lovely graph shows the yearly cost of a lifetime of shaving.</p>
-        <Footer />
-      </>
+        <p>
+          By shopping here you will be spending the same or less than you would on equivalent non-sustainable products. The only instance when this might not be the case is when shopping for reusable alternatives to disposable products. Those might cost a bit more upfront but will save you a lot of money in the long run. 
+          
+        </p>Here's an example: this lovely graph shows the yearly cost of a lifetime of shaving.
+      </main>
     )
   }
   /* HOME END*/
@@ -171,7 +173,7 @@ export default function App() {
   /* BLOG START*/
   function Blog() {
     return (
-      <>
+      <main>
         {blogposts.map((b) => (
           <div key={b.sys.id} >
             <h4 className='product-title'>{b.fields.blogTitle}</h4>
@@ -182,8 +184,7 @@ export default function App() {
           </div>
         ))
         }
-        <Footer />
-      </>
+      </main>
     )
   }
   /* BLOG END*/
@@ -192,7 +193,7 @@ export default function App() {
   /* SHOP START*/
   function Shop() {
     return (
-      <>
+      <main>
         {listings.map((listing) => (
           <div key={listing.id}>
             <h4 className='product-title'>{listing.title}</h4>
@@ -204,8 +205,7 @@ export default function App() {
           </div>
         ))
         }
-        <Footer />
-      </>
+      </main>
     )
   }
   /* SHOP END*/
@@ -213,15 +213,14 @@ export default function App() {
   /* REVIEWS START */
   function Reviews() {
     return (
-      <>
+      <main>
         {reviews.map((r) => (
           <div key={reviews.id}>
             <h4 className='product-title'>{r.fields.headline}</h4>
             <p className='product-description'>{r.fields.review}</p>
           </div>
         ))}
-        <Footer />
-      </>
+      </main>
     )
   }
 
@@ -255,6 +254,7 @@ export default function App() {
         <Route path="reviews" element={<Reviews />} />
         <Route path="contact" element={<ContactForm />} />
       </Routes>
+      <Footer />
     </div >
   );
 }

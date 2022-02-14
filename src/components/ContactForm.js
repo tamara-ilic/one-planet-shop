@@ -28,7 +28,7 @@ export default function ContactForm() {
     }
 
     return (
-        <>
+        <main>
             <h4>Have feedback or a suggestion? We'd love to hear from you! </h4>
             <form onSubmit={handleSubmit}>
 
@@ -54,6 +54,6 @@ export default function ContactForm() {
 
                 <button type='submit'>{status}</button>
             </form>
-        </>
+        </main>
     )
 }
