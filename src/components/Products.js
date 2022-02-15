@@ -8,7 +8,6 @@ import CircleLoader from 'react-spinners/CircleLoader'
 
 export default function Products() {
     const { products } = useContext(ShopContext)
-    console.log(products)
 
     const listings = products.map(product => {
         const productImages = product.fields.productMedia.map(image => (
@@ -34,6 +33,8 @@ export default function Products() {
           {products.map((product) => (
             <div className='product-listing'>
               <img className='product-image__main' src={product.fields.productMedia[0].fields.file.url} alt=''></img>
+              <h5 className='product-title'>{product.fields.title}</h5>
+              <p className='product-price'>€ {product.fields.price}</p>
             </div>
           ))}
         </div>

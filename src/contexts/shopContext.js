@@ -64,8 +64,7 @@ const ShopContextProvider = ({ children }) => {
     // PRODUCTS START
     const getProducts = () => {
         return client.getEntries({
-            content_type: 'product',
-            order: 'sys.createdAt'
+            content_type: 'product'
         });
     };
     // PRODUCTS END
