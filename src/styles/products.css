@@ -1,0 +1,18 @@
+.product-grid {
+    display: grid;
+    grid-auto-flow: row;
+    grid-gap: 1.25rem;
+    grid-template-rows: 6.25rem 6.25rem;
+    grid-template-columns: 6.5rem 6.5rem;
+    justify-content: center;
+    padding: 0.625rem;
+}
+
+.product-listing {
+    border: 1px solid red;
+}
+
+.product-image__main {
+    /* max-height: 100%; */
+    max-width: 100%;
+}

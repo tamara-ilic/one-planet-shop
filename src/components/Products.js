@@ -1,3 +1,5 @@
+import '../styles/products.css'
+
 import { useContext } from 'react'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { ShopContext } from '../contexts/shopContext'
@@ -6,6 +8,7 @@ import CircleLoader from 'react-spinners/CircleLoader'
 
 export default function Products() {
     const { products } = useContext(ShopContext)
+    console.log(products)
 
     const listings = products.map(product => {
         const productImages = product.fields.productMedia.map(image => (
@@ -25,18 +28,28 @@ export default function Products() {
       })
 
     return (
-        <main>
-        {listings.map((listing) => (
-          <div key={listing.id}>
-            <h4 className='product-title'>{listing.title}</h4>
-            <p>€ {listing.price}</p>
-            {listing.productImages}
-            <div className='product-description'>
-              {documentToReactComponents(listing.description)}
+      <main>
+        <h1>Products</h1>
+        <div className='product-grid'>
+          {products.map((product) => (
+            <div className='product-listing'>
+              <img className='product-image__main' src={product.fields.productMedia[0].fields.file.url} alt=''></img>
             </div>
-          </div>
-        ))
-        }
+          ))}
+        </div>
       </main>
+      //   <main>
+      //   {listings.map((listing) => (
+      //     <div key={listing.id}>
+      //       <h4 className='product-title'>{listing.title}</h4>
+      //       <p>€ {listing.price}</p>
+      //       {listing.productImages}
+      //       <div className='product-description'>
+      //         {documentToReactComponents(listing.description)}
+      //       </div>
+      //     </div>
+      //   ))
+      //   }
+      // </main>
     )
 }
