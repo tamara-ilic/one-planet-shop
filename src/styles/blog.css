@@ -1,0 +1,15 @@
+.blog-title {
+    padding-bottom: 1rem;
+    text-align: left;
+}
+
+.blog-image__main {
+    max-height: 50rem;
+    max-width: 32rem;
+    padding-bottom: 1rem;
+    width: 100%;
+}
+
+.blog-text {
+    text-align: left;
+}

@@ -1,3 +1,4 @@
+import '../styles/blog.css'
 import { useContext } from 'react'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { ShopContext } from '../contexts/shopContext'
@@ -9,9 +10,9 @@ export default function Blog() {
         <main>
             {blogposts.map((b) => (
                 <div key={b.sys.id} >
-                <h4 className='product-title'>{b.fields.blogTitle}</h4>
-                <img className='product-image' src={b.blogPicture} alt='placeholder'/>
-                <div className='product-description'>
+                <h4 className='blog-title'>{b.fields.blogTitle}</h4>
+                <img className='blog-image__main' src={b.blogPicture} alt='placeholder'/>
+                <div className='blog-text'>
                 {documentToReactComponents(b.fields.blogText)}
             </div>
           </div>
