@@ -21,7 +21,7 @@ export default function Navbar() {
           <img className='logo__leaves' src={require('../assets/one-planet-logo.png')} alt='One Planet logo' />
         </NavLink>
         <nav>
-          <button class='nav-button' onClick={handleNavbarToggle}>{navbarOpen ? <AiOutlineClose /> : <GiHamburgerMenu />}</button>
+          <button className='nav-button' onClick={handleNavbarToggle}>{navbarOpen ? <AiOutlineClose /> : <GiHamburgerMenu />}</button>
           <div className={`menuNav ${navbarOpen ? "showMenu" : ""}`}>
             <NavLink onClick={() => closeMenu()} to="/blog"  >Blog</NavLink>
             <NavLink onClick={() => closeMenu()} to="/shop" >Shop</NavLink>
