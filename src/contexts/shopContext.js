@@ -8,11 +8,12 @@ const ShopContextProvider = ({ children }) => {
     const [blogposts, setBlogPosts] = useState([])
     const [reviews, setReviews] = useState([]);
 
-
     useEffect(() => {
         getProducts()
           .then((res) => setProducts(res.items))
       }, [])
+
+      console.log(products)
     
       useEffect(() => {
         products.length && console.log(products[0].fields.productMedia)
