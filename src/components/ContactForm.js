@@ -1,5 +1,4 @@
 import '../styles/contactForm.css'
-
 import { useState } from 'react'
 
 export default function ContactForm() {

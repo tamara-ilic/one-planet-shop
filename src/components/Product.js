@@ -1,11 +1,14 @@
 import { useContext } from 'react'
 import { ShopContext } from '../contexts/shopContext'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import { useParams } from 'react-router-dom'
 import LazyLoad from 'react-lazyload'
 import CircleLoader from 'react-spinners/CircleLoader'
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 export default function Product() {
     const { products } = useContext(ShopContext)
+
+    let { productTitle } = useParams()
 
     const listings = products.map(product => {
         const productImages = product.fields.productMedia.map(image => (
@@ -25,9 +28,12 @@ export default function Product() {
         }
     })
 
+    // listings.filter((listing) => {
+    //     return listing.title === productTitle
+    // })
+
     return (
         <main>
-            {}
             {listings.map((listing) => (
                 <div key={listing.id}>
                     <h4 className='product-title'>{listing.title}</h4>
