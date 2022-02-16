@@ -17,8 +17,7 @@ export default function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='blog' element={<Blog />} />
-        <Route path='shop' element={<Products />}>
-        </Route>
+        <Route path='shop' element={<Products />} />
         <Route path='shop/:productTitle' element={<Product />} />
         <Route path='reviews' element={<Reviews />} />
         <Route path='contact' element={<ContactForm />} />
