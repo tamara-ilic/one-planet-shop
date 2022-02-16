@@ -18,8 +18,8 @@ export default function App() {
         <Route path='/' element={<Home />} />
         <Route path='blog' element={<Blog />} />
         <Route path='shop' element={<Products />}>
-          <Route path=':productTitle' element={<Product />} />
         </Route>
+        <Route path='shop/:productTitle' element={<Product />} />
         <Route path='reviews' element={<Reviews />} />
         <Route path='contact' element={<ContactForm />} />
       </Routes>
