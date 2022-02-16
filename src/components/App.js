@@ -1,12 +1,12 @@
 import '../styles/App.css'
 import { Routes, Route } from 'react-router-dom'
-import Home from './Home'
-import ContactForm from './ContactForm'
 import Navbar from './Navbar'
+import Home from './Home'
+import Blog from './Blog'
 import Products from './Products'
 import Product from './Product'
-import Blog from './Blog'
 import Reviews from './Reviews'
+import ContactForm from './ContactForm'
 import Footer from './Footer'
 
 export default function App() {

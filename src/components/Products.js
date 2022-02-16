@@ -1,9 +1,7 @@
 import '../styles/products.css'
 import { useContext } from 'react'
 import { ShopContext } from '../contexts/shopContext'
-import Test from './Test'
 import { NavLink } from 'react-router-dom'
-import Product from './Product'
 
 export default function Products() {
     const { products } = useContext(ShopContext)
