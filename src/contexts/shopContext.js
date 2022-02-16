@@ -5,19 +5,10 @@ export const ShopContext = createContext()
 
 const ShopContextProvider = ({ children }) => {
     const [products, setProducts] = useState([])
+ 
     const [blogposts, setBlogPosts] = useState([])
     const [reviews, setReviews] = useState([]);
-
-    useEffect(() => {
-        getProducts()
-          .then((res) => setProducts(res.items))
-      }, [])
-
-      console.log(products)
-    
-      useEffect(() => {
-        products.length && console.log(products[0].fields.productMedia)
-      }, [products])
+  
 
     useEffect(() => {
         getBlogPosts().then((res) => {
@@ -68,6 +59,13 @@ const ShopContextProvider = ({ children }) => {
             content_type: 'product'
         });
     };
+
+    const getProduct = (slug) => {
+        return client.getEntries({
+            content_type: 'product',
+            'fields.title[in]': slug
+        });
+    };
     // PRODUCTS END
   
     // BLOG START  
@@ -89,7 +87,7 @@ const ShopContextProvider = ({ children }) => {
   // REVIEWS END
 
   return (
-      <ShopContext.Provider value={{products, blogposts, reviews}}>
+      <ShopContext.Provider value={{getProducts, products, setProducts, getProduct, blogposts, reviews}}>
           {children}
       </ShopContext.Provider>
   )
