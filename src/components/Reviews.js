@@ -8,8 +8,8 @@ export default function Reviews() {
         <main>
             {reviews.map((r) => (
                 <div key={reviews.id}>
-                <h4 className='product-title'>{r.fields.headline}</h4>
-                <p className='product-description'>{r.fields.review}</p>
+                <h4>{r.fields.headline}</h4>
+                <p>{r.fields.review}</p>
             </div>
         ))}
       </main>

@@ -1,3 +1,4 @@
+import '../styles/product.css'
 import { useState, useContext, useEffect } from 'react'
 import { ShopContext } from '../contexts/shopContext'
 import { useParams } from 'react-router-dom'
@@ -45,9 +46,9 @@ export default function Product() {
     return (
         <main>
             {product ? <div key={product.id}>
+                {product.productImages}
                 <h4 className='product-title'>{productTitle}</h4>
                 <p>€ {product.price}</p>
-                {product.productImages}
                 <div className='product-description'>
                     {documentToReactComponents(product.description)}
                 </div>

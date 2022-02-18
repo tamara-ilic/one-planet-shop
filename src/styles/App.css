@@ -29,9 +29,9 @@ button:not(.nav-button) {
   color: white;
   display: inline-block;
   font-family: 'Sen', sans-serif;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 0.08em;
-  margin-top: 1rem;
+  margin-top: 3em;
   padding: 0.5rem 1rem;
 }
 
@@ -90,7 +90,7 @@ h1, h2, h3, h4 {
 }
 
 main {
-  padding: 4rem 1rem 0 1rem;
+  padding: 3rem 1rem 0 1rem;
 }
 
 main p {
@@ -106,26 +106,5 @@ main p {
 
 .shop-symbols {
   max-width: 18rem;
-  padding-top: 1rem;
+  padding-top: 2em;
 }
-/*  Move to individual product page TBC
-
-.product-description {
-  font-family: 'Crimson', serif;
-  line-height: 1.5;
-  text-align: left;
-}
-
-.product-image {
-  max-height: 50rem;
-  max-width: 32rem;
-  width: 100%;
-} */
-
-.footer {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  margin-top: 5em;
-}
-

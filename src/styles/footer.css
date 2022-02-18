@@ -1,0 +1,22 @@
+.footer {
+    gap: 10px;
+    justify-content: center;
+    margin-top: 3em;
+}
+
+.socials {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1em;
+}
+
+.socials a {
+    margin-right: 1rem;
+}
+
+.legal {
+    display: flex;
+    font-size: 0.75rem;
+    justify-content: space-evenly;
+}
+
