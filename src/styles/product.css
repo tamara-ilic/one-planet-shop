@@ -1,9 +1,3 @@
-.product-description {
-    font-family: 'Crimson', serif;
-    line-height: 1.5;
-    text-align: left;
-}
-
 .slick-prev:before,
 .slick-next:before {
     content: "" !important;
@@ -38,4 +32,27 @@
 
 .product-price {
     font-weight: bold;
+}
+
+.quantity {
+    text-align: center;
+}
+
+.quantity-wrapper > .quantity__reduce {
+    border: grey;
+    background-color: lightgray;
+    margin-right: 1em;
+}
+
+.quantity-wrapper > .quantity__increase {
+    border: grey;
+    background-color: lightgray;
+    margin-left: 1em;
+}
+
+.product-description {
+    font-family: 'Crimson', serif;
+    line-height: 1.5;
+    margin-top: 1em;
+    text-align: left;
 }
