@@ -15,6 +15,8 @@ export default function Product() {
     const { getProduct, products } = useContext(ShopContext)
     let { productTitle } = useParams()
 
+    const [itemQuantity, setItemQuantity] = useState(1)
+
     const makeDataNice = (product) => {
         const productImages = product.fields.productMedia.map(image => (
             <LazyLoad key={image.sys.id} placeholder={<CircleLoader color='#5DA69E' size='200px' />}>
@@ -64,9 +66,9 @@ export default function Product() {
         arrows: false,
         fade: true,
         asNavFor: '.slider-nav'
-      }
+    }
     
-      const settingsThumbs = {
+    const settingsThumbs = {
         slidesToShow: 3,
         slidesToScroll: 1,
         asNavFor: '.slider-for',
@@ -85,9 +87,8 @@ export default function Product() {
                 <div className="prev-slick-arrow"> ⫷ </div>
             </div>
                   )
-      }
-
-       /* Slider configuration END */
+    }
+    /* Slider configuration END */
     
     return (
         <main>
@@ -110,6 +111,12 @@ export default function Product() {
                 </div>
                 <h4 className='product-title'>{productTitle}</h4>
                 <p className='product-price'>€ {product.price}</p>
+                <div className='quantity-wrapper'>
+                <p className='quantity'>Quantity</p>
+                <button className='quantity__reduce' onClick={() => setItemQuantity(prev => prev - 1)}>-</button>
+                    {itemQuantity < 0 ? setItemQuantity(1) : itemQuantity}
+                <button className='quantity__increase' onClick={() => setItemQuantity(prev => prev + 1)}>+</button>
+                </div>
                 <div className='product-description'>
                     {documentToReactComponents(product.description)}
                 </div>
