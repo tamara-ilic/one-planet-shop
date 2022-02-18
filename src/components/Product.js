@@ -60,6 +60,10 @@ export default function Product() {
         setNav2(slider2)
     })
 
+    const SlickButtonFix = ({ currentSlide, slideCount, children, ...props }) => (
+        <span {...props}>{children}</span>
+    )
+
     const settingsMain = {
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -77,16 +81,14 @@ export default function Product() {
         swipeToSlide: true,
         focusOnSelect: true,
         centerPadding: '10px',
-        nextArrow: (
-            <div>
+        nextArrow: 
+            <SlickButtonFix>
                 <div className="next-slick-arrow"> ⫸ </div>
-            </div>
-                  ),
-        prevArrow: (
-            <div>
+            </SlickButtonFix>,
+        prevArrow: 
+            <SlickButtonFix>
                 <div className="prev-slick-arrow"> ⫷ </div>
-            </div>
-                  )
+            </SlickButtonFix>
     }
     /* Slider configuration END */
     

@@ -72,7 +72,8 @@ const ShopContextProvider = ({ children }) => {
     const getBlogPosts = () => {
         return client.getEntries({
             content_type: 'blog',
-            order: 'sys.createdAt'
+            order: 'sys.createdAt',
+            include: 10
         })
     }
     // BLOG END 

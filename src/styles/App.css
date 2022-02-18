@@ -108,3 +108,25 @@ main p {
   max-width: 18rem;
   padding-top: 2em;
 }
+
+@media screen and (min-width: 992px) {
+  .App {
+    border: 2px solid red;
+  }
+
+  .tagline {
+    font-size: 2.5em;
+    margin: auto;
+    max-width: 15em;
+  }
+
+  main p {
+    font-size: 1.3rem;
+    margin: auto;
+    max-width: 30rem;
+  }
+
+  .shop-symbols {
+    max-width: 26rem;
+  }
+}
