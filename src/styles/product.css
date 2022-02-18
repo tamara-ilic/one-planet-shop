@@ -1,0 +1,11 @@
+.product-description {
+  font-family: 'Crimson', serif;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.product-image {
+  max-height: 50rem;
+  max-width: 32rem;
+  width: 100%;
+}
