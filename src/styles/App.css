@@ -118,10 +118,6 @@ main p {
 }
 
 @media screen and (min-width: 992px) {
-  .App {
-    border: 2px solid red;
-  }
-
   .nav-button {
     display: none;
   }
