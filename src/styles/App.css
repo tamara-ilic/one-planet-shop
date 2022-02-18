@@ -27,12 +27,15 @@ button:not(.nav-button) {
   border: 1px solid transparent;
   border-radius: 2px;
   color: white;
-  display: inline-block;
   font-family: 'Sen', sans-serif;
   font-weight: 700;
   letter-spacing: 0.08em;
-  margin-top: 3em;
+  margin: 3em auto auto auto;
   padding: 0.5rem 1rem;
+}
+
+.button-shop {
+  display: block;
 }
 
 /* Header START */
@@ -64,6 +67,11 @@ header {
   right: 0;
   text-align: right;
   transition: all .5s ease;
+}
+
+.menuNav.showMenu a {
+  display: block;
+  text-align: right;
 }
 
 a {
@@ -112,6 +120,22 @@ main p {
 @media screen and (min-width: 992px) {
   .App {
     border: 2px solid red;
+  }
+
+  .nav-button {
+    display: none;
+  }
+
+  .menuNav {
+    direction: flex;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    position: unset;
+    width: 30%;
+  }
+
+  .menuNav a {
+    display: unset;
   }
 
   .tagline {

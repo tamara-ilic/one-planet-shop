@@ -24,3 +24,17 @@
     text-transform: none;
 }
 
+@media screen and (min-width: 992px) {
+    .socials h2 {
+        font-size: 2rem;
+    }
+
+    .legal {
+        justify-content: flex-end;
+    }
+
+    .legal a {
+        margin-right: 0.5rem;
+    }
+}
+
