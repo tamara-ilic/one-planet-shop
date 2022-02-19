@@ -21,16 +21,6 @@ export default function Blog() {
             )
           }
         },
-        [BLOCKS.EMBEDDED_ENTRY]: (node, children) => {
-          // target the contentType of the EMBEDDED_ENTRY to display as you need
-          if (node.data.target.sys.contentType.sys.id === "codeBlock") {
-            return (
-              <pre>
-                <code>{node.data.target.fields.code}</code>
-              </pre>
-            )
-          }
-        },
         [BLOCKS.EMBEDDED_ASSET]: (node, children) => {
           // render the EMBEDDED_ASSET as you need
           return (
