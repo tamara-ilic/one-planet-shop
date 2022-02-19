@@ -3,36 +3,31 @@ import { ShopContext } from '../contexts/shopContext'
 
 export default function Reviews() {
     const { reviews } = useContext(ShopContext)
-    const [reviewHeadline, setReviewHeadline] = useState('')
-    const [newReview, setNewReview] = useState('')
+    const [status, setStatus] = useState('Submit')
 
-    const handleReviewSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-    }
-
-    const handleReviewHeadline = (e) => {
-        if (e.keyCode === 13) {
-            console.log(e.keyCode)
-            setReviewHeadline(e.target.value)
-        } else return
-    }
-
-    const handleNewReview = (e) => {
-        if (e.keyCode === 13) {
-            console.log(e.keyCode)
-            setNewReview(e.target.value)
-        } else return
-    }
+        setStatus('Sending...')
+        const { headline, name, body } = e.target.elements
+        let details = {
+            headline: headline.value,
+            name: name.value,
+            body: body.value
+        }
+        let response = await fetch('http://localhost:5000/reviews', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(details),
+        })
+        setStatus('Submit')
+        let result = await response.json()
+        alert(result.status)
+      }
  
     return (
         <main>
-            {/* Below is a hack. New reviews should be added to a database along with existing ones. */}
-            {reviewHeadline && newReview &&
-                <div className='new-reviews'>
-                    <h4>{reviewHeadline}</h4>
-                    <p>{newReview}</p>
-                </div>
-            }
             {reviews.map((r) => (
                 <div key={reviews.id}>
                     <h4>{r.fields.headline}</h4>
@@ -41,10 +36,11 @@ export default function Reviews() {
                 </div>
             ))}
             <h4>Leave a review</h4>
-            <form onSubmit={handleReviewSubmit}>
-                <input onKeyUp={handleReviewHeadline} className='review-headline' placeholder='Headline'></input>
-                <textarea onKeyUp={handleNewReview} placeholder="Tried one of our products? We'd love to hear from you!"></textarea>
-                <input type='submit'></input>
+            <form onSubmit={handleSubmit}>
+                <input id='headline' type='text' className='review-headline' placeholder='Headline'></input>
+                <input id='name' type='text'></input>
+                <textarea id='body' placeholder="Tried one of our products? We'd love to hear from you!"></textarea>
+                <button type='submit'>{status}</button>
             </form>
       </main>
     )
