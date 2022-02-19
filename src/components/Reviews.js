@@ -2,7 +2,7 @@ import { useContext, useState } from 'react'
 import { ShopContext } from '../contexts/shopContext'
 
 export default function Reviews() {
-    const { reviews } = useContext(ShopContext)
+    const { reviews, setReviews } = useContext(ShopContext)
     const [status, setStatus] = useState('Submit')
 
     const handleSubmit = async (e) => {
@@ -14,7 +14,7 @@ export default function Reviews() {
             name: name.value,
             body: body.value
         }
-        let response = await fetch('http://localhost:5000/reviews', {
+        let response = await fetch('http://localhost:8080/reviews', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -23,13 +23,16 @@ export default function Reviews() {
         })
         setStatus('Submit')
         let result = await response.json()
+        console.log(result)
         alert(result.status)
       }
+
+      console.log(reviews)
  
     return (
         <main>
             {reviews.map((r) => (
-                <div key={reviews.id}>
+                <div key={r.sys.id}>
                     <h4>{r.fields.headline}</h4>
                     <p>{r.fields.review}</p>
                     {/* {r.fields.rating} */}

@@ -88,7 +88,7 @@ const ShopContextProvider = ({ children }) => {
   // REVIEWS END
 
   return (
-      <ShopContext.Provider value={{getProducts, products, setProducts, getProduct, blogposts, reviews}}>
+      <ShopContext.Provider value={{getProducts, products, setProducts, getProduct, blogposts, reviews, setReviews}}>
           {children}
       </ShopContext.Provider>
   )
